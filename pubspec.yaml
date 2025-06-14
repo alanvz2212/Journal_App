@@ -37,6 +37,7 @@ dependencies:
   shared_preferences: ^2.5.3
   build_runner: ^2.4.15
   flutter_launcher_icons: ^0.14.4
+  workmanager: ^0.6.0
 
 
 flutter_launcher_icons:

@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:journal_app/model/dairy.dart';
 import 'package:journal_app/model/event.dart';
+import 'package:journal_app/model/mood.dart';
 import 'package:journal_app/model/user.dart';
 import 'package:journal_app/screens/calender_screen.dart';
 import 'package:journal_app/screens/journal.dart';
 import 'package:journal_app/screens/my_moods.dart';
 import 'package:journal_app/screens/splash_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:workmanager/workmanager.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   // await NotificationService().init();
+
   // Workmanager().initialize(callbackDispatcher, isInDebugMode: false);
 
   Hive.registerAdapter(UserAdapter());
   Hive.registerAdapter(EventAdapter());
+  Hive.registerAdapter(MoodDataAdapter());
+  Hive.registerAdapter(DairyAdapter());
 
   final prefs = await SharedPreferences.getInstance();
   final isDarkMode = prefs.getBool('isDarkMode') ?? false;
