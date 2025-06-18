@@ -9,6 +9,11 @@ void main() async {
   await Hive.initFlutter();
   await NotificationService().init();
   Workmanager().initialize(callbackDispatcher, isInDebugMode: false);
+  
+  Hive.registerAdapter(UserAdapter());
+  Hive.registerAdapter(EventAdapter());
+  Hive.registerAdapter(MoodDataAdapter());
+  Hive.registerAdapter(DiaryAdapter());
 
   runApp(MyApp());
 }
